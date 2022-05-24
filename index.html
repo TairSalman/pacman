@@ -28,7 +28,6 @@
         </p>
         <canvas id="canvas" height="600" width="600"></canvas>
 		
-		
         <script type="text/javascript">
             const scoreEL = document.getElementById('scoreEL')
             var c = canvas.getContext("2d");
@@ -88,12 +87,12 @@
             }
 
             class Pellet{
-                constructor({ position, radius = 3, color = 'white', score = 5, image = createImage('./img/gem_blue.png')}) {
+                constructor({ position, radius = 3, color = 'white', score = 5}) {
                     this.position = position
                     this.radius = radius
                     this.color = color
                     this.score = score
-                    this.image=image
+                    //this.image=image
                 }
 
                 draw() {
@@ -102,7 +101,7 @@
                     c.fillStyle = this.color
                     c.fill()
                     c.closePath()
-                    c.drawImage(this.image, this.position.x - Boundary.width/2, this.position.y- Boundary.height/2)
+                    //c.drawImage(this.image, this.position.x - Boundary.width/2, this.position.y- Boundary.height/2)
                 }
 
             }
@@ -155,16 +154,46 @@
                     this.position.y += this.velocity.y
                 }
             }
+            function startGame(ghostsAmount,pelletsAmount,gameTime,name,up='ArrowUp',down='ArrowDown',right='ArrowRight',left='ArrowLeft',color5,color10,color25,random=false) 
+            { 
 
-            monstersAmount = 3 //settings 1 - 4
-            pelletsAmount = 60//settings 50 - 90
-            var timeLeft = 60; //settings 60+ seconds
+            if(random==false)
+            {
+            monstersAmount = ghostsAmount //settings 1 - 4
+            pelletsAmount = pelletsAmount//settings 50 - 90
+            var timeLeft = gameTime; //settings 60+ seconds
+            up = up//'ArrowUp'
+            down = down//'ArrowDown'
+            right = right//'ArrowRight'
+            left = left//'ArrowLeft'
+            colorBall5 = color5
+            colorBall10 = color10
+            colorBall25 = color25
+            playerName.innerHTML=name
+            }
+            else{
+            colors = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow", "White","Silver","lime","fuchsia","teal","aqua","aquamarine","azure","bisque"];
+            monstersAmount = Math.floor(Math.random() * 4) + 1; //settings 1 - 4
+            pelletsAmount = Math.floor(Math.random() * 50) + 40;//settings 50 - 90
+            var timeLeft = Math.floor(Math.random() * 60) + 60; //settings 60+ seconds
             up = 'ArrowUp'
             down = 'ArrowDown'
             right = 'ArrowRight'
             left = 'ArrowLeft' 
-            playerName.innerHTML="Raz"
+            colorBall5 = colors[Math.floor(Math.random()*colors.length)];
+            colorBall10 = colors[Math.floor(Math.random()*colors.length)];
+            colorBall25 = colors[Math.floor(Math.random()*colors.length)];
+            playerName.innerHTML=name
+            }
 
+            var timerAudio
+            function playAudio() {
+            let audio = new Audio('./background_music.mp3');
+            audio.loop=true
+            audio.play()            
+            }
+            addEventListener('keydown', playAudio, {once : true});
+            
             var timer; 
             lose=false
             pelletCheck = 0
@@ -172,7 +201,6 @@
             currentPelletsAmount = 0
             health=5
             
-
             function updateTimer() {
             timeLeft = timeLeft - 1;
             if(timeLeft >= 0 && !lose)
@@ -412,7 +440,7 @@
                                 x: j * Boundary.width,
                                 y: i * Boundary.height
                                 },
-                                image: createImage('./img/pipeConnectorLeft.png')
+                                //image: createImage('./img/pipeConnectorLeft.png')
                             })
                             )
                             break
@@ -429,9 +457,9 @@
                                     y: i * Boundary.height + Boundary.height / 2
                                     },
                                     radius: 5,
-                                    color: 'red',
+                                    color: colorBall25,
                                     score: 25,
-                                    image: createImage('./img/gem_purple.png')
+                                    //image: createImage('./img/gem_purple.png')
                                 })
                                 )
                             }
@@ -443,9 +471,9 @@
                                     y: i * Boundary.height + Boundary.height / 2
                                     },
                                     radius: 4,
-                                    color: 'green',
+                                    color: colorBall10,
                                     score: 10,
-                                    image: createImage('./img/gem_green.png')
+                                    //image: createImage('./img/gem_green.png')
                                 })
                                 )
                             }
@@ -457,7 +485,8 @@
                                     x: j * Boundary.width + Boundary.width / 2,
                                     y: i * Boundary.height + Boundary.height / 2
                                     },
-                                    image: createImage('./img/gem_blue.png')
+                                    color: colorBall5
+                                    //image: createImage('./img/gem_blue.png')
                                 })
                                 )        
                             }
@@ -848,8 +877,12 @@
                 }
             })
 
+        }
 
+        startGame(4,90,120,"Raz","ArrowUp","ArrowDown","ArrowRight","ArrowLeft",'red','white','red',true)
         </script>
+        
+
     </body>
 
 </html>
