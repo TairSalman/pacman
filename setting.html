@@ -1,0 +1,147 @@
+<style>
+    body{
+        margin: 0;
+        /* background-color: black; */
+        /* background-image: "img/background.jpg"; */
+        color: rgb(230, 218, 218);
+        background : "url('img_tree.png')";
+    }
+</style>
+<!DOCTYPE html>
+<html>
+    <head>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+        <link rel="geme" type="text/html" href="./UPDATE.html" />
+        <!-- <link rel="stylesheet" type="text/css" href="./settings.css" /> -->
+        <link rel="shortcut icon" type="image/x-icon" href="img/pacManIcon.png">		
+
+		
+		
+	</head>
+    <head></head>
+    <!-- <h1> Pac-Man</h1> -->
+    <body>
+        <!-- <div id="menu">
+
+
+			<ul>
+				
+			<li><a onclick="showPage('Welcome');" id = "welcomeUserName">Welcome</a></li>
+			<li><a onclick= "showPage('gamePage');"> Show Game</a></li> 
+			
+			<li><a onclick= "resetLoginForm()" id= "loginMenu">Login</a></li>
+
+			<li><a onclick= "resetRegisterForm()" id= "registerMenu"> Register</a></li>
+			<li><a onclick= "resetSettingsForm()" style="display: none;" id= "settingsMenu"> Settings</a></li>
+			<li><a onclick= "showPage('gamePage');"> Game</a></li> 
+
+			<li><a id="buttomAbout" >About</a></li>
+			<li><a onclick= "logout()" style="display: none;" id= "logoutMenu"> Log Out</a></li>
+
+
+			</ul>
+        
+		</div>	 -->
+<!-- //////////////setting////////////////////// -->
+<div>
+
+    <img src="img/pac_man_logo.jpg" height="300px" >
+
+    <div >
+    <h2>Game Settings</h2></br>
+    <form action="" id="settingsForm" name="settingsForm" autocomplete="off">
+        <div class="user-box">
+
+            <input id="up" name="up" type="text"  required="">
+            <label>Key Up</label>
+            
+        </div>
+        <div class="user-box">
+            <input id="down" name="down" type="text"  required="">
+            <label>Key Down</label>
+        </div>
+        <div class="user-box">
+            <input id="left" name="left" type="text"  required="">
+            <label>Key Left</label>
+            
+        </div>
+        <div class="user-box">
+            <input id="right" name="right" type="text"  required="">
+            <label>Key Right</label>
+        </div>
+
+        
+
+        <div class="user-box">
+            <input id="fivePoints" name="fivePoints" type="color" value="#32a852" class="bigball">
+            <label>Five Points Ball color</label>
+        </div>
+        <div class="user-box">
+            <input id="fifteenPoints" name="fifteenPoints" type="color" value = "#ff0000" class="mediumball">
+            <label>Fifteen Points Ball color</label>
+        </div>
+        <div class="user-box">
+            <input id="twentyFivePoints" name="twentyFivePoints" type="color" value="#3251a8" class="smallball">
+            <label>Twenty Five Points Ball color</label>
+        </div>	
+        
+        <div class="user-box">
+            <input id="numOfBalls" name="numOfBalls" type="number" value = "70" min="50" max="90" name="numOfBalls" required="">
+            <label>Number of balls in the game (between 50 to 90)</label>
+        </div>		
+                        
+        <div class="user-box">
+            <input id="timerVal" name="timerVal" type="number" value = "60" min="60" name="" required="">
+            <label>Time (Min 60 Seconds)</label>
+        </div>
+        <div class="user-box">
+            <label for="Ghosts">Number Of Ghosts</label>
+                <select id="Ghosts" name="Choose">
+                    <option >1</option>
+                    <option selected="selected">2</option>
+                    <option >3</option>
+                    <option >4</option>
+                </select>
+        </div><br>
+        <div class="user-box">
+            <label for="levelOfSpeed">Game Speed</label>
+                <select id="levelOfSpeed" name="Choose">							
+                    <option value="1" >1 - Slowest</option>
+                    <option >2</option>
+                    <option >3</option>
+                    <option >4</option>
+                    <option selected="selected" value="5">5 - Average</option>
+                    <option >6</option>
+                    <option >7</option>
+                    <option >8</option>
+                    <option >9</option>
+                    <option value="10">10 - Fastest</option>						
+                </select>
+        </div>
+        <div class="user-box">
+            <label for="levelOfSpeed">(1 is slowest and 10 is fastest)</label>
+        </div>
+        
+         <button id="startGame" onclick="startGame(Ghosts,numOfBalls,timerVal,name='mazal',upVal,downVal,rightVal,leftVal,fivePoints,fifteenPoints,twentyFivePoints,random=false);">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Start
+         </button>
+        <button id="randomGame" onclick="startGame(random=true);">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Random
+        </button>
+        </form>
+    </div>
+
+ </div>
+
+</div> 
+
+    </body>
+    </html>
